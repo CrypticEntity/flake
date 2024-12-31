@@ -3,7 +3,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./nix-alien.nix
+    ./apple-silicon-support
+    #./nix-alien.nix
     ./plasma.nix
     #./hyprland.nix
   ];
@@ -14,7 +15,7 @@
   # Set your time zone.
   time.timeZone = "Australia/Brisbane";
 
-  # Select locales.
+  # Select locales
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Define your user
@@ -41,18 +42,19 @@
     eza
     fastfetch
     fish
+    gh
     git
     htop
     hunspell
     hunspellDicts.en_AU
     libreoffice-qt-fresh
     librespot
-    lime3ds
+    #lime3ds
     moonlight-qt
     mpv
     nerd-fonts.fira-mono
     nil
-    openmw
+    #openmw
     pkgs.nixfmt-rfc-style
     prismlauncher
     python314
@@ -75,7 +77,13 @@
     enableSSHSupport = true;
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.copySystemConfiguration = true;
+  nix.settings.auto-optimise-store = true;
   system.stateVersion = "22.05";
 }

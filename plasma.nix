@@ -14,7 +14,6 @@
   services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
-    kdePackages.audiotube
     kdePackages.filelight
     kdePackages.falkon
     kdePackages.kdeconnect-kde

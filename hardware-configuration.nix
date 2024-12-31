@@ -47,7 +47,7 @@
     size = 16*1024;
   } ];
   networking.useDHCP = lib.mkDefault true;
-  nix.settings.max-jobs = 3;
+  nix.settings.max-jobs = 1;
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   powerManagement.enable = true;
 

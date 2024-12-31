@@ -1,15 +1,29 @@
 {
-  description = "A very basic flake";
+  description = "Nixos system flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
-  outputs = { self, nixpkgs }: {
-
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
-
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
+  outputs = { self, nixpkgs, nix-alien }: {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [ ./configuration.nix ];
+    };
+    nixosConfigurations.nix-alien-desktop = nixpkgs.lib.nixosSystem rec {
+      system = "aarch64-linux"; # or aarch64-linux
+      specialArgs = { inherit self system; };
+      modules = [
+        ({ self, system, ... }: {
+          environment.systemPackages = with self.inputs.nix-alien.packages.${system}; [
+            nix-alien
+          ];
+          # Optional, needed for `nix-alien-ld`
+          programs.nix-ld.enable = true;
+        })
+      ];
+    };
   };
 }
+
