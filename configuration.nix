@@ -24,23 +24,17 @@
     extraGroups = [ "wheel" ];
   };
 
-  # Define your user
-  users.users.hypr = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
-
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     anki
     ani-cli
     android-tools
     apfsprogs
-    box64
     chiaki
     dust
     eza
     fastfetch
+    nerd-fonts.fira-code
     fish
     gh
     git
@@ -51,16 +45,15 @@
     librespot
     #lime3ds
     moonlight-qt
-    mpv
-    nerd-fonts.fira-mono
     nil
-    #openmw
+    openmw
     pkgs.nixfmt-rfc-style
     prismlauncher
     python314
     spotifyd
     spotify-qt
     starship
+    vlc
     vim
     wget
     yt-dlp
@@ -69,9 +62,6 @@
   services.openssh.enable = true;
   networking.networkmanager.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;

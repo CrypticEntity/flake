@@ -6,12 +6,9 @@
 }:
 
 # don't bother to provide Darwin deps
-((pkgs.callPackage ./vendor { OpenGL = null; Xplugin = null; }).override {
+((pkgs.mesa).override {
   galliumDrivers = [ "swrast" "asahi" ];
   vulkanDrivers = [ "swrast" "asahi" ];
-  enableGalliumNine = false;
-  # libclc and other OpenCL components are needed for geometry shader support on Apple Silicon
-  enableOpenCL = true;
 }).overrideAttrs (oldAttrs: {
   # version must be the same length (i.e. no unstable or date)
   # so that system.replaceRuntimeDependencies can work
@@ -25,7 +22,14 @@
     hash = "sha256-Ny4M/tkraVLhUK5y6Wt7md1QBtqQqPDUv+aY4MpNA6Y=";
   };
 
-  mesonFlags = oldAttrs.mesonFlags ++ [
+  mesonFlags =
+    (builtins.filter
+      (x: (
+        !(lib.hasInfix "install-mesa-clc" x) &&
+        !(lib.hasInfix "opencl-spirv" x) &&
+        !(lib.hasInfix "gallium-nine" x)
+      ))
+      oldAttrs.mesonFlags) ++ [
       # we do not build any graphics drivers these features can be enabled for
       "-Dgallium-va=disabled"
       "-Dgallium-vdpau=disabled"
@@ -37,6 +41,17 @@
       "-Dlibunwind=disabled"
       "-Dlmsensors=disabled"
     ];
+
+
+  outputs = [
+    "out"
+    "dev"
+    "drivers"
+    "driversdev"
+    "opencl"
+    "teflon"
+    "osmesa"
+  ];
 
   # replace patches with ones tweaked slightly to apply to this version
   patches = [
