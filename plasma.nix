@@ -21,6 +21,7 @@
     kdePackages.kmail
     kdePackages.kmail-account-wizard
     kdePackages.kolourpaint
+    kdePackages.merkuro
     kdePackages.partitionmanager
     kdePackages.plasmatube
     libsForQt5.qtstyleplugin-kvantum
