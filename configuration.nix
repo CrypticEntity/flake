@@ -43,7 +43,7 @@
     hunspellDicts.en_AU
     libreoffice-qt-fresh
     librespot
-    #lime3ds
+    lime3ds
     moonlight-qt
     nil
     openmw
