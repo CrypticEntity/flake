@@ -56,6 +56,6 @@
   };
 
   boot.kernelParams = [
-    "apple_dcp.show_notch=1" "hid_apple" "fnmode=2"
+    "apple_dcp.show_notch=1"
   ];
 }
