@@ -36,6 +36,7 @@
     fastfetch
     nerd-fonts.fira-code
     fish
+    gamescope
     gh
     git
     htop
