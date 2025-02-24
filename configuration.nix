@@ -38,7 +38,6 @@
     dust
     eza
     fastfetch
-    nerd-fonts.fira-code
     fish
     gamescope
     gh
@@ -49,6 +48,7 @@
     libreoffice-qt-fresh
     librespot
     moonlight-qt
+    nerd-fonts.jetbrains-mono
     nil
     openmw
     pkgs.nixfmt-rfc-style
@@ -92,6 +92,7 @@
   };
   services.printing.enable = true;
 
+  nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
   system.stateVersion = "22.05";
