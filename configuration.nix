@@ -30,6 +30,10 @@
     ani-cli
     android-tools
     apfsprogs
+    aspell
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.en-science
     chiaki
     dust
     eza
@@ -44,24 +48,37 @@
     hunspellDicts.en_AU
     libreoffice-qt-fresh
     librespot
-    lime3ds
     moonlight-qt
     nil
     openmw
     pkgs.nixfmt-rfc-style
     prismlauncher
     python314
+    qbittorrent
     spotifyd
     spotify-qt
     starship
     vlc
     vim
+    warzone2100
     wget
     yt-dlp
   ];
 
   services.openssh.enable = true;
   networking.networkmanager.enable = true;
+
+  networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+
+  services.resolved = {
+    enable = true;
+    dnssec = "true";
+    domains = [ "~." ];
+    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    dnsovertls = "true";
+  };
+  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
   programs.gnupg.agent = {
     enable = true;
@@ -73,6 +90,7 @@
     dates = "weekly";
     options = "--delete-older-than 1w";
   };
+  services.printing.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;

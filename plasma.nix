@@ -17,7 +17,6 @@
     kdePackages.filelight
     kdePackages.falkon
     kdePackages.kdeconnect-kde
-    kdePackages.ktorrent
     kdePackages.kmail
     kdePackages.kmail-account-wizard
     kdePackages.kolourpaint
