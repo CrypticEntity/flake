@@ -7,18 +7,23 @@
   };
 
   outputs = { self, nixpkgs, nix-alien }: {
-      nixosConfigurations.nix-alien-desktop = nixpkgs.lib.nixosSystem rec {
-        system = "aarch64-linux"; # or aarch64-linux
-        specialArgs = { inherit self system; };
-        modules = [
-          ({ self, system, ... }: {
-            environment.systemPackages = with self.inputs.nix-alien.packages.${system}; [
-              nix-alien
-            ];
-            # Optional, needed for `nix-alien-ld`
-            programs.nix-ld.enable = true;
-          })
-        ];
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [ ./configuration.nix ];
+    };
+
+    nixosConfigurations.nix-alien-desktop = nixpkgs.lib.nixosSystem rec {
+      system = "aarch64-linux"; # or aarch64-linux
+      specialArgs = { inherit self system; };
+      modules = [
+        ({ self, system, ... }: {
+          environment.systemPackages = with self.inputs.nix-alien.packages.${system}; [
+            nix-alien
+          ];
+          # Optional, needed for `nix-alien-ld`
+          programs.nix-ld.enable = true;
+        })
+      ];
     };
   };
 }
