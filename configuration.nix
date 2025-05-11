@@ -29,13 +29,9 @@
     anki
     ani-cli
     android-tools
+    linuxKernel.packages.linux_6_13.apfs
     apfsprogs
-    aspell
-    aspellDicts.en
-    aspellDicts.en-computers
-    aspellDicts.en-science
     azahar
-    chiaki
     dust
     eza
     fastfetch
@@ -50,13 +46,15 @@
     libreoffice-qt-fresh
     librespot
     moonlight-qt
+    muvm
     nerd-fonts.jetbrains-mono
     nil
     openmw
-    pkgs.nixfmt-rfc-style
+    nixfmt-rfc-style
     prismlauncher
     python314
     qbittorrent
+    spotify-qt
     spotifyd
     starship
     vlc

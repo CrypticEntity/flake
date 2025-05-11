@@ -15,7 +15,6 @@
 
   environment.systemPackages = with pkgs; [
     kdePackages.filelight
-    kdePackages.falkon
     kdePackages.kdeconnect-kde
     kdePackages.kmail
     kdePackages.kmail-account-wizard
