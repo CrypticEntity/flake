@@ -29,8 +29,6 @@
     anki
     ani-cli
     android-tools
-    linuxKernel.packages.linux_6_13.apfs
-    apfsprogs
     azahar
     dust
     eza
@@ -57,11 +55,17 @@
     spotify-qt
     spotifyd
     starship
+    unrar
     vlc
     vim
     warzone2100
     wget
     yt-dlp
+    (retroarch.withCores (cores: with cores; [
+      desmume
+      citra
+      mgba
+    ])) 
   ];
 
 
