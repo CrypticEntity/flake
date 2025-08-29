@@ -9,7 +9,10 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ./apple-silicon-support
   ];
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.useOSProber = true;
+
   boot.loader.efi.canTouchEfiVariables = false;
   hardware.bluetooth.enable = true; # Enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # Powers up the default Bluetooth controller on boot
@@ -38,7 +41,7 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/FEDF-195A";
+    { device = "/dev/disk/by-uuid/DBE3-55EF";
       fsType = "vfat";
     };
 
@@ -51,9 +54,6 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   powerManagement.enable = true;
 
-  hardware.asahi = {
-    useExperimentalGPUDriver = true;
-  };
 
 
   boot.kernelParams = [ "apple_dcp.show_notch=1" ];

@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
+
   imports = [
     ./hardware-configuration.nix
     ./apple-silicon-support
@@ -25,16 +26,20 @@
   };
 
   # List packages installed in system profile.
+
   environment.systemPackages = with pkgs; [
-    anki
+    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+    #anki
     ani-cli
     android-tools
-    azahar
+    chiaki
     dust
     eza
     fastfetch
+    filezilla
     firefox-devedition
     fish
+    fzf
     gamescope
     gh
     git
@@ -44,7 +49,6 @@
     libreoffice-qt-fresh
     librespot
     moonlight-qt
-    muvm
     nerd-fonts.jetbrains-mono
     nil
     openmw
@@ -65,7 +69,7 @@
       desmume
       citra
       mgba
-    ])) 
+    ]))
   ];
 
 
