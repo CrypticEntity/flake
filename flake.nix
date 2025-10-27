@@ -14,6 +14,7 @@
   outputs = { self, nixpkgs, ... }@inputs: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
       system = "aarch64-linux";
       modules = [
         # Import the previous configuration.nix we used,
@@ -24,3 +25,4 @@
   };
 
 }
+

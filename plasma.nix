@@ -17,7 +17,6 @@
     kdePackages.filelight
     kdePackages.kdeconnect-kde
     kdePackages.kmail
-    kdePackages.falkon
     kdePackages.kmail-account-wizard
     kdePackages.kolourpaint
     kdePackages.merkuro
@@ -32,7 +31,6 @@
     oxygen
     khelpcenter
     krdp
-    xwaylandvideobridge
   ];
 
 }

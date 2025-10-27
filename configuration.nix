@@ -10,6 +10,8 @@
     #./hyprland.nix
   ];
 
+  networking.firewall.enable = false;
+
   # Define your hostname.
   networking.hostName = "nixos";
 
@@ -29,10 +31,10 @@
 
   environment.systemPackages = with pkgs; [
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
-    #anki
+    anki
     ani-cli
     android-tools
-    chiaki
+    deskflow
     dust
     eza
     fastfetch
@@ -45,13 +47,12 @@
     git
     htop
     hunspell
-    hunspellDicts.en_AU
+    input-leap
     libreoffice-qt-fresh
     librespot
     moonlight-qt
     nerd-fonts.jetbrains-mono
     nil
-    openmw
     nixfmt-rfc-style
     prismlauncher
     python314
