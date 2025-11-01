@@ -9,9 +9,16 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ./apple-silicon-support
   ];
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.grub = {
+    useOSProber = true;
+    efiSupport = true;
+    device = "nodev";
+    extraEntries = "
+        menuentry 'alarm' --class gnu-linux --class gnu --class os $menuentry_id_option 'nixos-0aca58bc-8fdb-4a07-aa2f-56406bcf19b7' {
+           set root='hd0,msdos4'
+           configfile /nixos/root/boot/grub/grub.cfg
+        }";
+   };
 
   boot.loader.efi.canTouchEfiVariables = false;
   hardware.bluetooth.enable = true; # Enables support for Bluetooth

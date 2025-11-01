@@ -63,7 +63,6 @@
     unrar
     vlc
     vim
-    warzone2100
     wget
     yt-dlp
     (retroarch.withCores (cores: with cores; [
