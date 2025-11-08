@@ -2,12 +2,13 @@
 
 {
 
+
   imports = [
     ./hardware-configuration.nix
     ./apple-silicon-support
     #./nix-alien.nix
-    ./plasma.nix
-    #./hyprland.nix
+    #./plasma.nix
+    ./hyprland.nix
   ];
 
   networking.firewall.enable = false;
@@ -39,18 +40,16 @@
     eza
     fastfetch
     filezilla
-    firefox-devedition
     fish
     fzf
-    gamescope
     gh
     git
     htop
     hunspell
-    input-leap
     libreoffice-qt-fresh
     librespot
     moonlight-qt
+    nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nil
     nixfmt-rfc-style
@@ -92,6 +91,7 @@
   services.printing.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
   system.stateVersion = "22.05";

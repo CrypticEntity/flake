@@ -9,18 +9,14 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ./apple-silicon-support
   ];
-  boot.loader.grub = {
-    useOSProber = true;
-    efiSupport = true;
-    device = "nodev";
-    extraEntries = "
-        menuentry 'alarm' --class gnu-linux --class gnu --class os $menuentry_id_option 'nixos-0aca58bc-8fdb-4a07-aa2f-56406bcf19b7' {
-           set root='hd0,msdos4'
-           configfile /nixos/root/boot/grub/grub.cfg
-        }";
-   };
+  boot.loader.systemd-boot.enable = false;
 
+  boot.loader.grub.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.useOSProber = true;
+  boot.loader.grub.efiSupport = true;
+
   hardware.bluetooth.enable = true; # Enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # Powers up the default Bluetooth controller on boot
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
@@ -31,7 +27,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/72bd8b6f-0e7f-46f2-a181-6560211eabe7";
+    { device = "/dev/disk/by-uuid/8265c6a4-03bf-4b75-8781-3fb77cc05c1e";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
@@ -42,13 +38,13 @@
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/72bd8b6f-0e7f-46f2-a181-6560211eabe7";
+    { device = "/dev/disk/by-uuid/8265c6a4-03bf-4b75-8781-3fb77cc05c1e";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/5CDF-1DF4";
+    { device = "/dev/disk/by-uuid/DD53-5F3B";
       fsType = "vfat";
     };
 
