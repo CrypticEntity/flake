@@ -8,8 +8,17 @@
     ./apple-silicon-support
     #./nix-alien.nix
     #./plasma.nix
-    ./hyprland.nix
+    #./hyprland.nix
   ];
+
+  specialisation = {
+    plasma.configuration = {
+      imports = [./plasma.nix];
+    };
+    illogical.configuration = {
+      imports = [./illogical.nix];
+    };
+  };
 
   networking.firewall.enable = false;
 
@@ -27,11 +36,13 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
-
+  users.users.end4dots = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
   # List packages installed in system profile.
 
   environment.systemPackages = with pkgs; [
-    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
     anki
     ani-cli
     android-tools

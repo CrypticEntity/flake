@@ -14,7 +14,8 @@
   services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
-    firefox-devedition
+    firefox
+    #firefox-devedition
     kdePackages.filelight
     kdePackages.kdeconnect-kde
     kdePackages.kmail
