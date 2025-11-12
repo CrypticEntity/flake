@@ -46,7 +46,6 @@
     anki
     ani-cli
     android-tools
-    deskflow
     dust
     eza
     fastfetch
@@ -57,6 +56,7 @@
     git
     htop
     hunspell
+    lan-mouse
     libreoffice-qt-fresh
     librespot
     moonlight-qt

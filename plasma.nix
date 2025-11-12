@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   qt = {
@@ -14,8 +14,8 @@
   services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
-    firefox
-    #firefox-devedition
+    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+    firefox-devedition
     kdePackages.filelight
     kdePackages.kdeconnect-kde
     kdePackages.kmail
